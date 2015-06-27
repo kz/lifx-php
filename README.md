@@ -54,7 +54,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/kz/lifx-php/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/kz/lifx-php.svg?style=flat-square
-[ico-coveralls]: https://coveralls.io/repos/kz/lifx-php/badge.svg
+[ico-coveralls]: https://img.shields.io/coveralls/kz/lifx-php/lifx-php.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/kz/lifx-php.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/kz/lifx-php.svg?style=flat-square
 
