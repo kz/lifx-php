@@ -39,8 +39,8 @@ class Lifx
     /**
      * Sends a request to the LIFX HTTP API.
      *
-     * @param $request
-     * @return mixed
+     * @param Request $request
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function sendRequest($request)
     {
@@ -54,7 +54,7 @@ class Lifx
      * Gets lights belonging to the authenticated account.
      *
      * @param string $selector Selector used to filter lights. Defaults to `all`.
-     * @return mixed
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function getLights($selector = 'all')
     {
@@ -69,7 +69,7 @@ class Lifx
      * Physically powered off lights are ignored.
      *
      * @param string $selector Selector used to filter lights. Defaults to `all`.
-     * @return mixed
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function toggleLights($selector = 'all')
     {
@@ -85,7 +85,7 @@ class Lifx
      * @param string $selector Selector used to filter lights. Defaults to `all`.
      * @param string $state State of 'on' or 'off'.
      * @param float $duration (Optional) Fade to the given `state` over a duration of seconds. Defaults to `1.0`.
-     * @return mixed
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function setLights($selector = 'all', $state = 'on', $duration = 1.0)
     {
@@ -105,7 +105,7 @@ class Lifx
      * @param string $color Color the lights should be set to. Defaults to `white`.
      * @param float $duration (Optional) Fade to the given `state` over a duration of seconds. Defaults to `1.0`.
      * @param bool $power_on (Optional) Whether to turn light on first. Defaults to `true`.
-     * @return mixed
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function setColor($selector = 'all', $color = 'white', $duration = 1.0, $power_on = true)
     {
@@ -131,7 +131,7 @@ class Lifx
      * @param bool $persist (Optional) Whether to keep state at the end of the effect. Defaults to `false`.
      * @param bool $power_on (Optional) Whether to turn light on first. Defaults to `true`.
      * @param float $peak (Optional) Defines where in a period the target color is at its maximum. Defaults to `0.5`. Minimum `0.0`, maximum `1.0`.
-     * @return mixed
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function breatheLights(
         $selector = 'all',
@@ -169,7 +169,7 @@ class Lifx
      * @param bool $persist (Optional) Whether to keep state at the end of the effect. Defaults to `false`.
      * @param bool $power_on (Optional) Whether to turn light on first. Defaults to `true`.
      * @param float $duty_cycle (Optional) Ratio of the period where color is active. Defaults to `0.5`. Minimum `0.0`, maximum `1.0`.
-     * @return mixed
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function pulseLights(
         $selector = 'all',
