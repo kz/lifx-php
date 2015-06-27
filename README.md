@@ -42,7 +42,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Kelvin Zhang][https://github.com/kz/lifx-php]
+- [Kelvin Zhang](https://github.com/kz)
 - [All Contributors][link-contributors]
 
 ## License
