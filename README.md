@@ -3,7 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Coverage Status][ico-coveralls]][link-coveralls]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
@@ -54,12 +54,13 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/kz/lifx-php/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/kz/lifx-php.svg?style=flat-square
+[ico-coveralls]: https://coveralls.io/repos/kz/lifx-php/badge.svg
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/kz/lifx-php.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/kz/lifx-php.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/kz/lifx-php
 [link-travis]: https://travis-ci.org/kz/lifx-php
-[link-scrutinizer]: https://scrutinizer-ci.com/g/kz/lifx-php/code-structure
+[link-coveralls]: https://coveralls.io/r/kz/lifx-php
 [link-code-quality]: https://scrutinizer-ci.com/g/kz/lifx-php
 [link-downloads]: https://packagist.org/packages/kz/lifx-php
 [link-author]: https://github.com/kz
