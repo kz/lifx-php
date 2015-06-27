@@ -1,6 +1,6 @@
 <?php
 
-namespace League\Skeleton\Test;
+namespace Kz\Lifx\Test;
 
 class ExampleTest extends \PHPUnit_Framework_TestCase
 {
