@@ -1,43 +1,44 @@
 {
-    "name": "kz/lifx-php",
-    "description": "lifx-php is a PHP package for the LIFX HTTP API.",
-    "keywords": [
-        "lifx-php"
-    ],
-    "homepage": "https://github.com/kz/lifx-php",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Kelvin Zhang",
-            "email": "lifxphp@iamkelv.in",
-            "homepage": "http://iamkelv.in/",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php" : ">=5.5.0",
-        "guzzlehttp/guzzle": "~6.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit" : "4.*",
-        "scrutinizer/ocular": "~1.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Kz\\Lifx\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Kz\\Lifx\\Test\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "phpunit"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
+  "name": "kz/lifx-php",
+  "description": "lifx-php is a PHP package for the LIFX HTTP API.",
+  "keywords": [
+    "lifx-php",
+    "lifx"
+  ],
+  "homepage": "https://github.com/kz/lifx-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kelvin Zhang",
+      "email": "lifxphp@iamkelv.in",
+      "homepage": "http://iamkelv.in/",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "scrutinizer/ocular": "~1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kz\\Lifx\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Kz\\Lifx\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
 }
