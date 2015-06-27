@@ -89,7 +89,7 @@ class Lifx
      */
     public function setLights($selector = 'all', $state = 'on', $duration = 1.0)
     {
-        $request = new Request('PUT', 'lights/' . $selector . '/power', null, [
+        $request = new Request('PUT', 'lights/' . $selector . '/power', [], [
             'state' => $state,
             'duration' => $duration,
         ]);
@@ -109,7 +109,7 @@ class Lifx
      */
     public function setColor($selector = 'all', $color = 'white', $duration = 1.0, $power_on = true)
     {
-        $request = new Request('PUT', 'lights/' . $selector . '/color', null, [
+        $request = new Request('PUT', 'lights/' . $selector . '/color', [], [
             'color' => $color,
             'duration' => $duration,
             'power_on' => $power_on,
@@ -143,7 +143,7 @@ class Lifx
         $power_on = true,
         $peak = 0.5
     ) {
-        $request = new Request('POST', 'lights/' . $selector . '/effects/breathe', null, [
+        $request = new Request('POST', 'lights/' . $selector . '/effects/breathe', [], [
             'color' => $color,
             'from_color' => $from_color,
             'period' => $period,
@@ -181,7 +181,7 @@ class Lifx
         $power_on = true,
         $duty_cycle = 0.5
     ) {
-        $request = new Request('POST', 'lights/' . $selector . '/effects/pulse', null, [
+        $request = new Request('POST', 'lights/' . $selector . '/effects/pulse', [], [
             'selector' => $selector,
             'color' => $color,
             'from_color' => $from_color,
