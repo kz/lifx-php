@@ -22,8 +22,9 @@ $ composer require kz/lifx-php
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+$api_token = 'token';
+$lifx = new Kz\Lifx($api_token);
+$lifx->toggleLights();
 ```
 
 ## Change log
