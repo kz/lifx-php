@@ -19,12 +19,50 @@ Via Composer
 $ composer require kz/lifx-php
 ```
 
+## Laravel Configuration
+
+lifx-php has optional support for Laravel and comes with a Service Provider and Facades for easy integration. The vendor/autoload.php is included by Laravel, so you don't have to require or autoload manually. Just see the instructions below.
+
+After you have installed lifx-php, open your Laravel config file config/app.php and add the following lines.
+
+In the $providers array add the service providers for this package.
+
+``` php
+Kz\Lifx\LifxServiceProvider::class,
+```
+
+Add the facade of this package to the $aliases array.
+
+``` php
+'Lfix' => Kz\Lifx\LifxFacade::class,
+```
+
+Now the Lifx Class will be auto-loaded by Laravel.
+
+You also need to supply your API Token in your .env environment file.
+
+```
+LIFX_TOKEN=0000000000000000000000000000000000000000000000000000000000000000
+```
+
 ## Usage
 
 ``` php
 $api_token = 'token';
 $lifx = new Kz\Lifx($api_token);
 $lifx->toggleLights();
+```
+
+## Laravel Usage
+
+``` php
+// usage inside a laravel route
+Route::get('/', function()
+{
+    $lifx = Lifx::all();
+
+    return json_decode($lifx);
+});
 ```
 
 ## Change log

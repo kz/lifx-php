@@ -5,7 +5,7 @@ All Notable changes to `lifx-php` will be documented in this file
 ## NEXT - YYYY-MM-DD
 
 ### Added
-- Nothing
+- Added Optional Laravel Support
 
 ### Deprecated
 - Nothing
