@@ -36,16 +36,18 @@ class Lifx
         $this->client = $client;
     }
 
+
     /**
      * Sends a request to the LIFX HTTP API.
      *
-     * @param Request $request
+     * @param $request
+     * @param array $options
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function sendRequest($request)
+    public function sendRequest($request, $options = [])
     {
         $client = $this->client;
-        $response = $client->send($request);
+        $response = $client->send($request, $options);
 
         return $response;
     }
@@ -89,11 +91,13 @@ class Lifx
      */
     public function setLights($selector = 'all', $state = 'on', $duration = 1.0)
     {
-        $request = new Request('PUT', 'lights/' . $selector . '/power', [], [
-            'state' => $state,
-            'duration' => $duration,
+        $request = new Request('PUT', 'lights/' . $selector . '/power');
+        $response = $this->sendRequest($request,[
+            'query' => [
+                'state' => $state,
+                'duration' => $duration
+            ]
         ]);
-        $response = $this->sendRequest($request);
 
         return $response->getBody();
     }
@@ -109,12 +113,14 @@ class Lifx
      */
     public function setColor($selector = 'all', $color = 'white', $duration = 1.0, $power_on = true)
     {
-        $request = new Request('PUT', 'lights/' . $selector . '/color', [], [
-            'color' => $color,
-            'duration' => $duration,
-            'power_on' => $power_on,
+        $request = new Request('PUT', 'lights/' . $selector . '/color');
+        $response = $this->sendRequest($request,[
+            'query' => [
+                'color' => $color,
+                'duration' => $duration,
+                'power_on' => $power_on,
+            ]
         ]);
-        $response = $this->sendRequest($request);
 
         return $response->getBody();
     }
@@ -143,16 +149,18 @@ class Lifx
         $power_on = true,
         $peak = 0.5
     ) {
-        $request = new Request('POST', 'lights/' . $selector . '/effects/breathe', [], [
-            'color' => $color,
-            'from_color' => $from_color,
-            'period' => $period,
-            'cycles' => $cycles,
-            'persist' => $persist,
-            'power_on' => $power_on,
-            'peak' => $peak,
+        $request = new Request('POST', 'lights/' . $selector . '/effects/breathe');
+        $response = $this->sendRequest($request,[
+            'query' => [
+                'color' => $color,
+                'from_color' => $from_color,
+                'period' => $period,
+                'cycles' => $cycles,
+                'persist' => $persist,
+                'power_on' => $power_on,
+                'peak' => $peak,
+            ]
         ]);
-        $response = $this->sendRequest($request);
 
         return $response->getBody();
     }
@@ -181,17 +189,19 @@ class Lifx
         $power_on = true,
         $duty_cycle = 0.5
     ) {
-        $request = new Request('POST', 'lights/' . $selector . '/effects/pulse', [], [
-            'selector' => $selector,
-            'color' => $color,
-            'from_color' => $from_color,
-            'period' => $period,
-            'cycles' => $cycles,
-            'persist' => $persist,
-            'power_on' => $power_on,
-            'duty_cycle' => $duty_cycle,
+        $request = new Request('POST', 'lights/' . $selector . '/effects/pulse');
+        $response = $this->sendRequest($request,[
+            'query' => [
+                'selector' => $selector,
+                'color' => $color,
+                'from_color' => $from_color,
+                'period' => $period,
+                'cycles' => $cycles,
+                'persist' => $persist,
+                'power_on' => $power_on,
+                'duty_cycle' => $duty_cycle,
+            ]
         ]);
-        $response = $this->sendRequest($request);
 
         return $response->getBody();
     }
