@@ -49,7 +49,7 @@ LIFX_TOKEN=0000000000000000000000000000000000000000000000000000000000000000
 
 ``` php
 $api_token = 'token';
-$lifx = new Kz\Lifx($api_token);
+$lifx = new Kz\Lifx\Lifx($api_token);
 $lifx->toggleLights();
 ```
 
