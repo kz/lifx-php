@@ -24,18 +24,15 @@ class Lifx
      * A token can be obtained at: https://cloud.lifx.com/settings
      *
      * @param string $token Authorization token for the LIFX HTTP API.
+     * @param null|Client optional client, for easier testing
      */
-    public function __construct($token)
+    public function __construct($token, $client = null)
     {
-        $client = new Client([
-            'base_uri' => self::API_URL . self::API_VERSION . '/',
-            'headers' => [
-                'Authorization' => 'Bearer ' . $token,
-            ],
-        ]);
+        if (is_null($client)) {
+            $client = $this->getClient($token);
+        }
         $this->client = $client;
     }
-
 
     /**
      * Sends a request to the LIFX HTTP API.
@@ -92,7 +89,7 @@ class Lifx
     public function setLights($selector = 'all', $state = 'on', $duration = 1.0)
     {
         $request = new Request('PUT', 'lights/' . $selector . '/power');
-        $response = $this->sendRequest($request,[
+        $response = $this->sendRequest($request, [
             'query' => [
                 'state' => $state,
                 'duration' => $duration
@@ -114,7 +111,7 @@ class Lifx
     public function setColor($selector = 'all', $color = 'white', $duration = 1.0, $power_on = true)
     {
         $request = new Request('PUT', 'lights/' . $selector . '/color');
-        $response = $this->sendRequest($request,[
+        $response = $this->sendRequest($request, [
             'query' => [
                 'color' => $color,
                 'duration' => $duration,
@@ -150,7 +147,7 @@ class Lifx
         $peak = 0.5
     ) {
         $request = new Request('POST', 'lights/' . $selector . '/effects/breathe');
-        $response = $this->sendRequest($request,[
+        $response = $this->sendRequest($request, [
             'query' => [
                 'color' => $color,
                 'from_color' => $from_color,
@@ -190,7 +187,7 @@ class Lifx
         $duty_cycle = 0.5
     ) {
         $request = new Request('POST', 'lights/' . $selector . '/effects/pulse');
-        $response = $this->sendRequest($request,[
+        $response = $this->sendRequest($request, [
             'query' => [
                 'selector' => $selector,
                 'color' => $color,
@@ -204,5 +201,20 @@ class Lifx
         ]);
 
         return $response->getBody();
+    }
+
+    /**
+     * Retrieves instance of client
+     * @param $token string from constructor
+     * @return Client
+     */
+    protected function getClient($token)
+    {
+        return new Client([
+            'base_uri' => self::API_URL . self::API_VERSION . '/',
+            'headers' => [
+                'Authorization' => 'Bearer ' . $token,
+            ],
+        ]);
     }
 }
