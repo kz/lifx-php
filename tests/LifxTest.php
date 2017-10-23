@@ -59,8 +59,8 @@ class LifxTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->getMockBuilder(Client::class)->setMethods(['send'])->getMock();
         $client->expects($this->once())->method('send')->with(
-            new Request('PUT', 'lights/all/power'),
-            ['query' => ['state' => 'on', 'duration' => 1.0]]
+            new Request('PUT', 'lights/all/state'),
+            ['query' => ['power' => 'on', 'duration' => 1.0]]
         )->willReturn(new Response());
         $lifx = new Lifx('ABCD-EFGH', $client);
         $lifx->setLights('all');
@@ -74,7 +74,7 @@ class LifxTest extends \PHPUnit_Framework_TestCase
     {
         $client = $this->getMockBuilder(Client::class)->setMethods(['send'])->getMock();
         $client->expects($this->once())->method('send')->with(
-            new Request('PUT', 'lights/all/color'),
+            new Request('PUT', 'lights/all/state'),
             ['query' => ['color' => 'white', 'duration' => 1.0, 'power_on' => true]]
         )->willReturn(new Response());
         $lifx = new Lifx('ABCD-EFGH', $client);
@@ -130,5 +130,38 @@ class LifxTest extends \PHPUnit_Framework_TestCase
         )->willReturn(new Response());
         $lifx = new Lifx('ABCD-EFGH', $client);
         $lifx->pulseLights('all');
+    }
+
+    /**
+     * assert validateColor makes calls to endpoint
+     * @return void
+     */
+    public function testValidateColor()
+    {
+        $client = $this->getMockBuilder(Client::class)->setMethods(['send'])->getMock();
+        $client->expects($this->once())->method('send')->with(
+            new Request('GET', 'color'),
+            [
+                'query' => [
+                    'string' => 'RED',
+                ]
+            ]
+        )->willReturn(new Response());
+        $lifx = new Lifx('ABCD-EFGH', $client);
+        $lifx->validateColor('RED');
+    }
+
+    /**
+     * assert getScenes makes calls to endpoint
+     * @return void
+     */
+    public function testGetScenes()
+    {
+        $client = $this->getMockBuilder(Client::class)->setMethods(['send'])->getMock();
+        $client->expects($this->once())->method('send')->with(
+            new Request('GET', 'scenes')
+        )->willReturn(new Response());
+        $lifx = new Lifx('ABCD-EFGH', $client);
+        $lifx->getScenes();
     }
 }

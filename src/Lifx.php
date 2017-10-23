@@ -12,7 +12,7 @@ use GuzzleHttp\Psr7\Request;
 class Lifx
 {
     const API_URL = 'https://api.lifx.com/';
-    const API_VERSION = 'v1beta1';
+    const API_VERSION = 'v1';
 
     /**
      * @var Client
@@ -84,15 +84,14 @@ class Lifx
      * @param string $selector Selector used to filter lights. Defaults to `all`.
      * @param string $state State of 'on' or 'off'.
      * @param float $duration (Optional) Fade to the given `state` over a duration of seconds. Defaults to `1.0`.
-     * @deprecated 
      * @return \Psr\Http\Message\StreamInterface
      */
     public function setLights($selector = 'all', $state = 'on', $duration = 1.0)
     {
-        $request = new Request('PUT', 'lights/' . $selector . '/power');
+        $request = new Request('PUT', 'lights/' . $selector . '/state');
         $response = $this->sendRequest($request, [
             'query' => [
-                'state' => $state,
+                'power' => $state,
                 'duration' => $duration
             ]
         ]);
@@ -107,12 +106,11 @@ class Lifx
      * @param string $color Color the lights should be set to. Defaults to `white`.
      * @param float $duration (Optional) Fade to the given `state` over a duration of seconds. Defaults to `1.0`.
      * @param bool $power_on (Optional) Whether to turn light on first. Defaults to `true`.
-     * @deprecated
      * @return \Psr\Http\Message\StreamInterface
      */
     public function setColor($selector = 'all', $color = 'white', $duration = 1.0, $power_on = true)
     {
-        $request = new Request('PUT', 'lights/' . $selector . '/color');
+        $request = new Request('PUT', 'lights/' . $selector . '/state');
         $response = $this->sendRequest($request, [
             'query' => [
                 'color' => $color,
@@ -201,6 +199,34 @@ class Lifx
                 'duty_cycle' => $duty_cycle,
             ]
         ]);
+
+        return $response->getBody();
+    }
+
+    /**
+     * Validates a color
+     * @param string $color Color string you'd like to validate
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function validateColor($color)
+    {
+        $request = new Request('GET', 'color');
+        $response = $this->sendRequest($request, [
+            'query' => [
+                'string' => $color,
+            ]
+        ]);
+
+        return $response->getBody();
+    }
+
+    /**
+     * Get scenes
+     * @return \Psr\Http\Message\StreamInterface
+     */
+    public function getScenes() {
+        $request = new Request('GET', 'scenes');
+        $response = $this->sendRequest($request);
 
         return $response->getBody();
     }
