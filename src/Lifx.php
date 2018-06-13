@@ -142,8 +142,8 @@ class Lifx
         $from_color = null,
         $period = 1.0,
         $cycles = 1.0,
-        $persist = false,
-        $power_on = true,
+        $persist = 'false',
+        $power_on = 'true',
         $peak = 0.5
     ) {
         $request = new Request('POST', 'lights/' . $selector . '/effects/breathe');
@@ -182,8 +182,8 @@ class Lifx
         $from_color = null,
         $period = 1.0,
         $cycles = 1.0,
-        $persist = false,
-        $power_on = true,
+        $persist = 'false',
+        $power_on = 'true',
         $duty_cycle = 0.5
     ) {
         $request = new Request('POST', 'lights/' . $selector . '/effects/pulse');
