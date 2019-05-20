@@ -11,6 +11,8 @@ lifx-php is a PHP package for the LIFX HTTP API.
 
 The author is not affiliated with LIFX and LIFX is not involved in the development of this package in any way.
 
+**Request for stakeholder comments!** I am looking to gauge whether this package is still being used to decide whether to continue maintaining it. Please email me or open an issue to let me know whether you are looking to use any endpoints which are missing or whether you would like to see this package kept up to date.
+
 ## Install
 
 Via Composer
